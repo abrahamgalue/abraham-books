@@ -1,36 +1,50 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import { books } from "../data/books";
+import type { GetStaticPaths } from 'astro'
+import Layout from '../layouts/Layout.astro'
+import { books } from '../data/books'
 
-const { book } = Astro.params;
+export const prerender = false
 
-const info = books.find((b) => b.id === book);
+const { book } = Astro.params
+
+const info = books.find(b => b.id === book)
 
 if (!info) {
-  return Astro.redirect("/404");
+  return Astro.redirect('/404')
+}
+
+export async function getStaticPaths() {
+  
+  return books.map(book => ({
+    params: {
+      book: book.id
+    }
+  }))
 }
 ---
 
 <Layout title={`Book ${info.title}`}>
-  <main class="m-auto max-w-4xl">
+  <main class='m-auto max-w-4xl'>
     <header>
       <h1
-        class="font-black uppercase text-5xl md:text-8xl text-center py-4 px-4"
-        style="view-transition-name: book-title; scale: .5;"
+        class='font-black text-white uppercase text-5xl md:text-8xl text-center py-4 px-4'
+        style='view-transition-name: book-title; scale: .5;'
       >
         Programming
         <span
-          class="block text-[33px] md:text-[66px] font-extrabold text-transparent text-8xl bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"
+          class='block text-[33px] md:text-[66px] font-extrabold text-transparent text-8xl bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500'
           >books</span
         >
       </h1>
     </header>
 
-    <div class="grid grid-cols-1 md:grid-cols-[350px_1fr] gap-x-12 mt-2 md:mt-20 px-8">
-      <div class="flex flex-col mb-10">
-        <picture class="mb-8 w-full relative">
+    <div
+      class='grid grid-cols-1 md:grid-cols-[350px_1fr] gap-x-12 mt-2 md:mt-20 px-8'
+    >
+      <div class='flex flex-col mb-10'>
+        <picture class='mb-8 w-full relative'>
           <img
-            class="aspect-[221/343] h-full object-cover w-full max-w-full rounded-lg"
+            class='aspect-[221/343] h-full object-cover w-full max-w-full rounded-lg'
             src={info.img}
             alt={`Portada del libro ${info.title}`}
             style={`view-transition-name: book-${info.id}`}
@@ -38,30 +52,30 @@ if (!info) {
         </picture>
 
         <a
-          href="/"
-          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 justify-center"
+          href='/'
+          class='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 justify-center'
         >
           <svg
-            class="w-3.5 h-3.5 mr-2"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="currentColor"
-            viewBox="0 0 18 21"
+            class='w-3.5 h-3.5 mr-2'
+            aria-hidden='true'
+            xmlns='http://www.w3.org/2000/svg'
+            fill='currentColor'
+            viewBox='0 0 18 21'
           >
             <path
-              d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"
+              d='M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z'
             ></path>
           </svg>
           Buy now
         </a>
       </div>
 
-      <aside class="md:mt-0 mt-10">
-        <h1 class="text-5xl font-black mb-4">{info.title}</h1>
-        <p class="text-lg mb-4">{info.opinion}</p>
+      <aside class='md:mt-0 mt-10'>
+        <h1 class='text-5xl font-black mb-4 text-white'>{info.title}</h1>
+        <p class='text-lg mb-4 text-white'>{info.opinion}</p>
         <p>
-          <strong>Autor:</strong>
-          <span class="font-semibold text-gray-200">{info.author}</span>
+          <strong class="text-white">Autor:</strong>
+          <span class='font-semibold text-gray-200'>{info.author}</span>
         </p>
       </aside>
     </div>
