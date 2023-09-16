@@ -14,16 +14,15 @@ if (!info) {
 }
 
 export async function getStaticPaths() {
-  
   return books.map(book => ({
     params: {
-      book: book.id
-    }
+      book: book.id,
+    },
   }))
 }
 ---
 
-<Layout title={`Book ${info.title}`}>
+<Layout title={`Book - ${info.title}`}>
   <main class='m-auto max-w-4xl'>
     <header>
       <h1
@@ -44,10 +43,10 @@ export async function getStaticPaths() {
       <div class='flex flex-col mb-10'>
         <picture class='mb-8 w-full relative'>
           <img
+            transition:name={`book-${info.id}`}
             class='aspect-[221/343] h-full object-cover w-full max-w-full rounded-lg'
             src={info.img}
             alt={`Portada del libro ${info.title}`}
-            style={`view-transition-name: book-${info.id}`}
           />
         </picture>
 
@@ -66,7 +65,7 @@ export async function getStaticPaths() {
               d='M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z'
             ></path>
           </svg>
-          Buy now
+           Buy now
         </a>
       </div>
 
@@ -74,7 +73,7 @@ export async function getStaticPaths() {
         <h1 class='text-5xl font-black mb-4 text-white'>{info.title}</h1>
         <p class='text-lg mb-4 text-white'>{info.opinion}</p>
         <p>
-          <strong class="text-white">Autor:</strong>
+          <strong class='text-white'>Autor:</strong>
           <span class='font-semibold text-gray-200'>{info.author}</span>
         </p>
       </aside>

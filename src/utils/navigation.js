@@ -1,3 +1,11 @@
+/*
+  Esta era la manera en la que se hacía antes 
+  de que existiera la View Transition API
+  integrada en Astro 3.0
+  
+*/
+
+/*
 const checkIsNavigationSupported = () => {
   return Boolean(document.startViewTransition);
 };
@@ -10,7 +18,8 @@ const fetchPage = async (url) => {
   // quedarnos sólo con el contenido del html dentro de la etiqueta body
   // usamos un regex para extraerlo
   const [, data] = text.match(/<body>([\s\S]*)<\/body>/i);
-  return data;
+  const [, title] = text.match(/<title>([\s\S]*)<\/title>/i)
+  return { data, title };
 };
 
 export const startViewTransition = () => {
@@ -25,15 +34,17 @@ export const startViewTransition = () => {
     // si es una navegación en el mismo dominio (origen)
     event.intercept({
       async handler() {
-        const data = await fetchPage(toUrl.pathname);
+        const { data, title } = await fetchPage(toUrl.pathname);
 
         // utilizar la api de View Transition API
         document.startViewTransition(() => {
           // el scroll hacia arriba del todo
           document.body.innerHTML = data;
+          document.title = title;
           document.documentElement.scrollTop = 0;
         });
       },
     });
   });
 };
+*/
