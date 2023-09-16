@@ -2,7 +2,6 @@
   Esta era la manera en la que se hacía antes 
   de que existiera la View Transition API
   integrada en Astro 3.0
-  
 */
 
 /*
