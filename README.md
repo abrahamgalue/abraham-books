@@ -8,4 +8,6 @@
 
 Es una lista de mis libros favoritos utilizando Astro como librería y Tailwind.
 
+🧩 Aquí puedes ver su [**Live Demo**](https://abraham-books.netlify.app/)
+
 Como punto a destacar implementaba las [View Transitions API](https://developer.chrome.com/docs/web-platform/view-transitions/) de forma vanilla implementada por Chrome. Antes de que fuera actualizado a la version de [Astro 3.0](https://astro.build/blog/astro-3/)
