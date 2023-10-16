@@ -21,7 +21,7 @@ Como punto a destacar implementaba las [View Transitions API](https://developer.
 El proyecto utiliza las siguientes tecnologías:
 
 - **Astro** como framework.
-- Página 404, para direcciones incorrectas.
+- **Página 404** customizada, para direcciones incorrectas.
 - [**Rutas dinámicas**](https://docs.astro.build/en/core-concepts/routing/#dynamic-routes) para crear páginas únicas para cada libro.
 - Las [**ViewTransitions**](https://docs.astro.build/en/guides/view-transitions/) de Astro para crear animaciones entre páginas.
 - [**Tailwind CSS**](https://tailwindcss.com/) para aplicar los estilos.
