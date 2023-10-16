@@ -6,7 +6,7 @@
 
 ### Lista de mis libros favoritos
 
-> 🧩 Aquí puedes ver su [**Live Demo**](https://abraham-books.netlify.app/)
+> 🧩 Aquí puedes ver su [**Live Demo.**](https://abraham-books.netlify.app/)
 
 ![vista-previa](./public/preview/01-page-preview.png)
 
